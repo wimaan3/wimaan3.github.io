@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="left-side">
+                <div class="nav-link-wrapper active-nav-link">
+                    <a href="index.html">Home</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="about.html">About</a>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="brand">
+                    <div>IMAAN SOLTANALIPOUR</div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="portfolio-items-wrapper">
+
+                <div class="portfolio-item-wrapper">
+                    <video controls>
+                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="img-text-wrapper">
+                        <div class="subtitle">
+                            Project #1
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item-wrapper">
+                    <video controls>
+                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="img-text-wrapper">
+                        <div class="subtitle">
+                            Project #2
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item-wrapper">
+                    <video controls>
+                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="img-text-wrapper">
+                        <div class="subtitle">
+                            Project #3
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item-wrapper">
+                    <video controls>
+                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="img-text-wrapper">
+                        <div class="subtitle">
+                            Education
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item-wrapper">
+                    <video controls>
+                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="img-text-wrapper">
+                        <div class="subtitle">
+                            Experiences
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item-wrapper">
+                    <video controls>
+                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="img-text-wrapper">
+                        <div class="subtitle">
+                            Skills and Social Media
+                        </div>
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const portfolioItems = document.querySelectorAll('.portfolio-item-wrapper')
+
+    portfolioItems.forEach(portfolioItem => {
+        portfolioItem.addEventListener('mouseover', () => {
+            console.log(portfolioItem.childNodes[1].classList);
+            portfolioItem.childNodes[1].classList.add('img-darken');
+        })
+        portfolioItem.addEventListener('mouseout', () => {
+            portfolioItem.childNodes[1].classList.remove('img-darken');
+        })
+    })
+</script>
+</html>
