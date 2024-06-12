@@ -10,15 +10,13 @@
     <div class="container">
         <div class="nav-wrapper">
             <div class="left-side">
-                <div class="nav-link-wrapper">
+                <div class="nav-link-wrapper" id="home-link">
                     <a href="index.html">Home</a>
                 </div>
-
-                <div class="nav-link-wrapper active-nav-link">
+                <div class="nav-link-wrapper active-nav-link" id="about-link">
                     <a href="about.html">About</a>
                 </div>
             </div>
-
             <div class="right-side">
                 <div class="brand">
                     <div>IMAAN SOLTANALIPOUR</div>
@@ -28,18 +26,66 @@
         <div class="content-wrapper"> 
             <div class="two-column-wrapper">
                 <div class="profile-image-wrapper">
-                    <img src="Images/Untitled design.jpg">
-
-                    </img>
+                    <img src="Images/Untitled design.jpg" alt="Profile Picture">
                 </div>
-
                 <div class="profile-content-wrapper">
                     <h1>
-                        Hello, my name is Imaan Soltanalipour. I am a transfer student at UCLA as a Computer Science major.  I have extensive experience in developing full-stack software applications and Artificial Intelligence and Machine Learning projects. I hope to make a lasting impact with you all.
+                        Hello, my name is Imaan Soltanalipour. I am a transfer student at UCLA as a Computer Science major. I have extensive experience in developing full-stack software applications and Artificial Intelligence and Machine Learning projects. I hope to make a lasting impact with you all.
                     </h1>
                 </div>
-            </div>   
+            </div>
+            <div class="contact-wrapper">
+                <h2>Contact Me</h2>
+                <form id="contact-form" action="https://formspree.io/f/mnqeeddz" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <
         </div>
     </div>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            fetch('https://formspree.io/f/mnqeeddz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('Email sent successfully');
+                    document.getElementById('contact-form').reset();
+                } else {
+                    alert('Failed to send email');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send email');
+            });
+        });
+    
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('index.html')) {
+            document.getElementById('home-link').classList.add('active-nav-link');
+            document.getElementById('about-link').classList.remove('active-nav-link');
+        } else if (currentPath.includes('about.html')) {
+            document.getElementById('home-link').classList.remove('active-nav-link');
+            document.getElementById('about-link').classList.add('active-nav-link');
+        }
+    </script>
+    
+      
+    
 </body>
 </html>
