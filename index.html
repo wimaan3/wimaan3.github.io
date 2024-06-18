@@ -5,6 +5,32 @@
     <title>Page Title</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .portfolio-item-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .portfolio-item-wrapper iframe {
+            width: 100%;
+            max-width: 640px;
+            height: 360px;
+            border: none;
+        }
+        .subtitle {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .additional-info-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .additional-info-item {
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -26,7 +52,7 @@
         <div class="content-wrapper">
             <div class="portfolio-items-wrapper">
                 <div class="portfolio-item-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1HwEEkDNOkxplsO8IZ8Yq-VXO_pxFUvKM/preview" width="640" height="480" allow="autoplay"></iframe>
+                    <iframe src="https://drive.google.com/file/d/1HwEEkDNOkxplsO8IZ8Yq-VXO_pxFUvKM/preview" allow="autoplay"></iframe>
                     <div class="img-text-wrapper">
                         <div class="subtitle">
                             <a href="https://ccrorg.vercel.app/" target="_blank">Founder of Community College Research Organization</a>
