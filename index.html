@@ -12,11 +12,25 @@
             align-items: center;
             margin: 20px;
         }
-        .portfolio-item-wrapper iframe {
+        .video-thumbnail {
             width: 100%;
             max-width: 640px;
-            height: 360px;
-            border: none;
+            height: auto; 
+            background: url('image (4).jpg') no-repeat center center;
+            background-size: cover;
+            border: 1px solid #ccc;
+            position: relative;
+            cursor: pointer;
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            background: url('path_to_your_play_button_image.png') no-repeat center center;
+            background-size: contain;
         }
         .subtitle {
             text-align: center;
@@ -52,7 +66,9 @@
         <div class="content-wrapper">
             <div class="portfolio-items-wrapper">
                 <div class="portfolio-item-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1HwEEkDNOkxplsO8IZ8Yq-VXO_pxFUvKM/preview" allow="autoplay"></iframe>
+                    <div class="video-thumbnail" onclick="window.open('https://drive.google.com/file/d/1HwEEkDNOkxplsO8IZ8Yq-VXO_pxFUvKM/view?usp=sharing', '_blank')">
+                        <div class="play-button"></div>
+                    </div>
                     <div class="img-text-wrapper">
                         <div class="subtitle">
                             <a href="https://ccrorg.vercel.app/" target="_blank">Founder of Community College Research Organization</a>
