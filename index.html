@@ -5,6 +5,38 @@
     <title>Page Title</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .portfolio-item-wrapper {
+            display: flex;
+            width: 260px;
+            max-width: 260px;
+            height: 260px; 
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .video-thumbnail {
+            width: 260px;
+            max-width: 260px;
+            height: 260px;  
+            background-size: cover;
+            border: 1px solid #ccc;
+            position: relative;
+            cursor: pointer;
+        }
+        .subtitle {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .additional-info-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .additional-info-item {
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -26,32 +58,9 @@
         <div class="content-wrapper">
             <div class="portfolio-items-wrapper">
                 <div class="portfolio-item-wrapper">
-                    <video controls>
-                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="img-text-wrapper">
-                        <div class="subtitle">
-                            Project #1
-                        </div>
-                    </div>
+                    <div class="video-thumbnail" onclick="window.open('https://drive.google.com/file/d/1HwEEkDNOkxplsO8IZ8Yq-VXO_pxFUvKM/view?usp=sharing', '_blank')">
+                    <img src="Images/image (4).jpg" >
                 </div>
-                <div class="portfolio-item-wrapper">
-                    <video controls>
-                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="img-text-wrapper">
-                        <div class="subtitle">
-                            Project #2
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item-wrapper">
-                    <video controls>
-                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
                     <div class="img-text-wrapper">
                         <div class="subtitle">
                             <a href="https://ccrorg.vercel.app/" target="_blank">Founder of Community College Research Organization</a>
