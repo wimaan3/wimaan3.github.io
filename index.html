@@ -1,124 +1,339 @@
 <!DOCTYPE html>
 <html>
-<head>
-    
+  <head>
     <meta charset="utf-8" />
     <title>Page Title</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        .portfolio-item-wrapper {
-            display: flex;
-            width: 260px;
-            max-width: 260px;
-            height: 220px; 
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-        }
-        .video-thumbnail {
-            width: 260px;
-            max-width: 260px;
-            height: 146px;  
-            background-size: cover;
-            border: 1px solid #ccc;
-            position: relative;
-            cursor: pointer;
-        }
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .subtitle {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .additional-info-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .additional-info-item {
-            margin: 0 10px;
-        }
+      .portfolio-item-wrapper {
+        display: flex;
+        width: 260px;
+        max-width: 260px;
+        height: 220px;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .portfolio-item-wrapper:hover {
+        transform: scale(1.05);
+      }
+
+      .project-thumbnail {
+        width: 260px;
+        max-width: 260px;
+        height: 146px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        transition: background-color 0.3s;
+      }
+
+      .project-thumbnail:hover {
+        background-color: #ddd;
+      }
+
+      .subtitle {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        width: 60%;
+        max-width: 800px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: black;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .slideshow-container {
+        width: 100%;
+        max-width: 700px;
+        margin: auto;
+      }
+
+      .slideshow-container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .description {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .additional-info-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .additional-info-item {
+        margin: 0 10px;
+      }
+
+      /* Add styles for the buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.3s ease;
+        border-radius: 0 3px 3px 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        user-select: none;
+      }
+
+      /* Position "next" to the right */
+      .next {
+        right: 10px;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* Position "prev" to the left */
+      .prev {
+        left: 10px;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* On hover, increase button size slightly */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="nav-wrapper">
-            <div class="left-side">
-                <div class="nav-link-wrapper active-nav-link" id="home-link">
-                    <a href="index.html">Home</a>
-                </div>
-                <div class="nav-link-wrapper" id="about-link">
-                    <a href="about.html">About</a>
-                </div>
-            </div>
-            <div class="right-side">
-                <div class="brand">
-                    <div>IMAAN SOLTANALIPOUR</div>
-                </div>
-            </div>
+      <div class="nav-wrapper">
+        <div class="left-side">
+          <div class="nav-link-wrapper active-nav-link" id="home-link">
+            <a href="index.html">Home</a>
+          </div>
+          <div class="nav-link-wrapper" id="about-link">
+            <a href="about.html">About</a>
+          </div>
         </div>
-        <div class="content-wrapper">
-            <div class="portfolio-items-wrapper">
-                <div class="portfolio-item-wrapper">
-                    <video controls>
-                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="img-text-wrapper">
-                        <div class="subtitle">
-                            Project #1
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item-wrapper">
-                    <video controls>
-                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="img-text-wrapper">
-                        <div class="subtitle">
-                            Project #2
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item-wrapper">
-                    <video controls>
-                        <source src="your_google_drive_shareable_link_here" type="video/mp4"> 
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="img-text-wrapper">
-                        <div class="subtitle">
-                            <a href="https://ccrorg.vercel.app/" target="_blank">Founder of Community College Research Organization</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="additional-info-wrapper">
-                <div class="additional-info-item">
-                    <a href="https://app.joinhandshake.com/stu/users/57102137" target="_blank">handshake</a>
-                </div>
-                <div class="additional-info-item">
-                    <a href="https://www.linkedin.com/in/imaan-soltanalipour-0452b6251/" target="_blank">linkedin</a>
-                </div>
-                <div class="additional-info-item">
-                    <a href="https://github.com/wimaan3" target="_blank">github</a>
-                </div>
-            </div>
+        <div class="right-side">
+          <div class="brand">
+            <div>IMAAN SOLTANALIPOUR</div>
+          </div>
         </div>
+      </div>
+      <div class="content-wrapper">
+        <div class="portfolio-items-wrapper">
+          <!-- Project 1 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(1)">
+            <div class="project-thumbnail">
+              <p>AI-Powered Document Analysis and Semantic Search System</p>
+            </div>
+            <div class="subtitle">Click for more details</div>
+          </div>
+          <!-- Project 2 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(2)">
+            <div class="project-thumbnail">
+              <p>Self-Flying Drone Simulation with Unity ML-Agents</p>
+            </div>
+            <div class="subtitle">Click for more details</div>
+          </div>
+          <!-- Project 3 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(3)">
+            <div class="project-thumbnail">
+              <p>
+                Brain Disease Classification using Convolutional Neural Networks
+              </p>
+            </div>
+            <div class="subtitle">Click for more details</div>
+          </div>
+          <!-- Project 4 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(4)">
+            <div class="project-thumbnail">
+              <p>
+                Artificial Intelligence and Machine Learning Physics Simulator
+              </p>
+            </div>
+            <div class="subtitle">Click for more details</div>
+          </div>
+          <!-- Project 5 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(5)">
+            <div class="project-thumbnail">
+              <p>Founder of Community College Research Organization Startup</p>
+            </div>
+            <div class="subtitle">Click for more details</div>
+          </div>
+        </div>
+
+        <div class="additional-info-wrapper">
+          <div class="additional-info-item">
+            <a
+              href="https://app.joinhandshake.com/stu/users/57102137"
+              target="_blank"
+              >Handshake</a
+            >
+          </div>
+          <div class="additional-info-item">
+            <a
+              href="https://www.linkedin.com/in/imaan-soltanalipour-0452b6251/"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </div>
+          <div class="additional-info-item">
+            <a href="https://github.com/wimaan3" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Modal for Project Details -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="slideshow-container" id="slideshow-container">
+          <img id="slideshow-img" src="" alt="Project Image" />
+          <button class="prev" onclick="prevSlide()">&#10094;</button>
+          <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+        <div class="description" id="project-description"></div>
+      </div>
+    </div>
+
     <script>
-        const currentPath = window.location.pathname;
-        if (currentPath.includes('index.html')) {
-            document.getElementById('home-link').classList.add('active-nav-link');
-            document.getElementById('about-link').classList.remove('active-nav-link');
-        } else if (currentPath.includes('about.html')) {
-            document.getElementById('home-link').classList.remove('active-nav-link');
-            document.getElementById('about-link').classList.add('active-nav-link');
+      const projectDetails = {
+        1: {
+          images: [
+            "Images/agent1.png",
+            "Images/agent2.png",
+            "Images/agent3.png",
+            "Images/agent4.png",
+          ],
+          description:
+            "Developed an AI-driven system to process and analyze any dataset input by the user. Utilized NLP and vector embeddings to extract insights and provide detailed answers from document content based on any user query. Integrated Pinecone for vector storage and semantic search, achieving an average cosine similarity score of 0.92 across 20,000 processed historical documents. Designed and optimized a batch processing pipeline that reduced document insertion time by 40%. Implemented a security layer to protect against malware and harmful links while dynamically processing user queries for Kaggle, Wikipedia, and other public datasets.",
+        },
+        2: {
+          images: [
+            "Images/drone1.png",
+            "Images/drone2.png",
+            "Images/drone3.png",
+            "Images/drone4.png",
+            "Images/drone5.png",
+          ],
+          description:
+            "Designed and developed a self-flying drone simulation in Unity using the ML-Agents framework and Python. Created physics-accurate drone models and environmental rules to enable machine learning-based training, simulating over 500,000 training steps. Achieved a 30% runtime decrease through optimization and environmental design. Integrated onboard simulation processing for real-time decision making, enabling drones to dynamically adjust their path. The project achieved a 90% success rate in complex navigation tasks and is planned to be deployed on physical drones for real-world applications like scanning and autonomous navigation.",
+        },
+        3: {
+          images: [
+            "Images/scan1.png",
+            "Images/scan2.png",
+            "Images/scan3.png",
+            "Images/scan4.png",
+          ],
+          description:
+            "Developed a deep learning model using Convolutional Neural Networks (CNNs) to classify brain diseases from CT scan images into three categories: aneurysm, cancer, and tumor. Processed over 500 medical images and created an augmented dataset of 5000 images, achieving a classification accuracy of over 90%. Applied data preprocessing, augmentation, and hyperparameter optimization to reduce overfitting, leading to a 15% improvement between training and validation accuracy. This system demonstrates potential for assisting in medical diagnostics with high accuracy in image-based disease classification.",
+        },
+        4: {
+          images: ["Images/uni1.png", "Images/uni2.png"],
+          description:
+            'Developing a Python-based AI and Machine Learning Physics Simulator capable of interpreting user commands using a natural language processing neural network. The simulator dynamically predicts and forecasts physical phenomena using historical data, weather patterns, and NASA-like datasets. Users can input complex queries such as "Will these meteors strike Earth?" and the system runs accurate physics simulations, training its neural network based on real data. The project leverages advanced statistical models to predict outcomes with high precision, contributing to research in physics simulation and AI-driven forecasting.',
+        },
+        5: {
+          images: ["Images/ccro1.png", "Images/ccro2.png", "Images/ccro3.png"],
+          description:
+            "Founded the Community College Research Organization (CCRO), a platform that connects community college students and professors for research collaboration. Built the website using JavaScript (React) and Firebase, providing a secure and scalable backend-to-frontend connection. Promoted the platform at Moorpark College, significantly increasing user engagement and facilitating academic project recruitment and collaboration. The CCRO platform enables seamless communication for proposing and managing research projects, helping students and faculty to collaborate effectively across disciplines.",
+        },
+      };
+
+      let currentImageIndex = 0;
+      let currentProjectId = null;
+
+      function openModal(projectId) {
+        currentProjectId = projectId;
+        document.getElementById("projectModal").style.display = "flex";
+        loadSlideshow(projectId);
+      }
+
+      function closeModal() {
+        document.getElementById("projectModal").style.display = "none";
+      }
+
+      function loadSlideshow(projectId) {
+        const project = projectDetails[projectId];
+        if (!project) return;
+
+        currentImageIndex = 0;
+        document.getElementById("slideshow-img").src =
+          project.images[currentImageIndex];
+        document.getElementById("project-description").innerText =
+          project.description;
+      }
+
+      function nextSlide() {
+        const project = projectDetails[currentProjectId];
+        if (project) {
+          currentImageIndex = (currentImageIndex + 1) % project.images.length;
+          document.getElementById("slideshow-img").src =
+            project.images[currentImageIndex];
         }
+      }
+
+      function prevSlide() {
+        const project = projectDetails[currentProjectId];
+        if (project) {
+          currentImageIndex =
+            (currentImageIndex - 1 + project.images.length) %
+            project.images.length;
+          document.getElementById("slideshow-img").src =
+            project.images[currentImageIndex];
+        }
+      }
+
+      window.onclick = function (event) {
+        if (event.target == document.getElementById("projectModal")) {
+          closeModal();
+        }
+      };
     </script>
-</body>
+  </body>
 </html>
