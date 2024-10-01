@@ -1,373 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
     <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            font-family: "Lato", sans-serif;
-        }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Lato", sans-serif;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
 
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: var(--navbar-bg);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            height: 60px;
-        }
+      .dark-theme .active-nav-link a {
+        background-color: #000;
+        color: #fff;
+      }
 
-        .left-side {
-            display: flex;
-            gap: 15px;
-        }
+      .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: var(--navbar-bg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: 60px;
+      }
 
-        .nav-link-wrapper a {
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-            background-color: #007BFF;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+      .left-side {
+        display: flex;
+        gap: 15px;
+      }
 
-        .nav-link-wrapper a:hover {
-            background-color: #0056b3;
-        }
+      .nav-link-wrapper a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        background-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
 
-        .active-nav-link a {
-            font-weight: bold;
-            background-color: #0056b3;
-        }
+      .nav-link-wrapper a:hover {
+        background-color: #0056b3;
+      }
 
-        .right-side .brand div {
-            font-size: 18px;
-            font-weight: bold;
-        }
+      .active-nav-link a {
+        font-weight: bold;
+        background-color: #0056b3;
+      }
 
-        .portfolio-items-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
+      .right-side .brand div {
+        font-size: 18px;
+        font-weight: bold;
+      }
 
-        .portfolio-item-wrapper {
-            width: 100%;
-            max-width: 320px;
-            margin-bottom: 40px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+      .portfolio-items-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
 
-        .portfolio-item-wrapper:hover {
-            transform: scale(1.05);
-        }
+      .portfolio-item-wrapper {
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 40px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
 
-        .project-thumbnail img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
+      .portfolio-item-wrapper:hover {
+        transform: scale(1.05);
+      }
 
-        .project-thumbnail {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            background-size: cover;
-            background-position: center;
-        }
+      .project-thumbnail img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
 
-        .subtitle {
-            margin-top: 15px;
-            font-size: 16px;
-            line-height: 1.4;
-        }
+      .project-thumbnail {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        background-size: cover;
+        background-position: center;
+      }
 
-        .click-details a {
-            color: #007BFF;
-            text-decoration: none;
-            font-size: 14px;
-            margin-top: 10px;
-            display: inline-block;
-        }
+      .subtitle {
+        margin-top: 15px;
+        font-size: 16px;
+        line-height: 1.4;
+      }
 
-        .click-details a:hover {
-            color: #0056b3;
-        }
+      .click-details a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: 10px;
+        display: inline-block;
+      }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
+      .click-details a:hover {
+        color: #0056b3;
+      }
 
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            width: 700px;
-            height: auto;
-            max-height: 80%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-y: auto;
-        }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
 
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: black;
-            font-size: 30px;
-            cursor: pointer;
-        }
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        width: 700px;
+        height: auto;
+        max-height: 80%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+      }
 
-        ul {
-            list-style-position: outside;
-            padding-left: 20px;
-        }
+      .dark-theme .modal-content {
+        background-color: #000;
+        color: #fff;
+      }
 
-        ul li {
-            text-align: left;
-            margin-bottom: 10px;
-            padding-left: 10px;
-        }
+      .dark-theme .close {
+        position: absolute;
+        top: -10px;
+        right: 0px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+      }
 
-        ul li::marker {
-            font-size: 16px;
-        }
+      .light-theme .modal-content {
+        background-color: white;
+        color: #000;
+      }
 
-        ul li p {
-            margin: 0;
-        }
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: black;
+        font-size: 30px;
+        cursor: pointer;
+      }
 
-        .slideshow-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
+      ul {
+        list-style-position: outside;
+        padding-left: 20px;
+      }
 
-        .description {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 14px;
-        }
+      ul li {
+        text-align: left;
+        margin-bottom: 10px;
+        padding-left: 10px;
+      }
 
-        .additional-info-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: -190px;
-            gap: 15px;
-        }
+      ul li::marker {
+        font-size: 16px;
+      }
 
-        .button-nav {
-            text-decoration: none;
-            color: white;
-            background-color: #007BFF;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-size: 16px;
-        }
+      ul li p {
+        margin: 0;
+      }
 
-        .button-nav:hover {
-            background-color: #0056b3;
-        }
+      .slideshow-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
 
-        .prev,
-        .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            padding: 1px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s ease;
-            border-radius: 0 3px 3px 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            user-select: none;
-        }
+      .description {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+      }
 
-        .prev {
-            left: 1px;
-            border-radius: 3px 0 0 3px;
-        }
+      .additional-info-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: -190px;
+        gap: 15px;
+      }
 
-        .next {
-            right: 1px;
-            border-radius: 3px 0 0 3px;
-        }
+      .button-nav {
+        text-decoration: none;
+        color: white;
+        background-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-size: 16px;
+      }
 
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+      .button-nav:hover {
+        background-color: #0056b3;
+      }
 
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-        }
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        padding: 1px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.3s ease;
+        border-radius: 0 3px 3px 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        user-select: none;
+      }
 
-        .theme-toggle button {
-            padding: 10px 20px;
-            font-size: 14px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+      .prev {
+        left: 1px;
+        border-radius: 3px 0 0 3px;
+      }
 
-        .theme-toggle button:hover {
-            background-color: #0056b3;
-        }
+      .next {
+        right: 1px;
+        border-radius: 3px 0 0 3px;
+      }
 
-        .dark-theme {
-            --navbar-bg: #333;
-            --content-bg: #222;
-            --border-color: #444;
-            color: #000;
-            background-color: #111;
-        }
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
-        .light-theme {
-            --navbar-bg: #f8f8f8;
-            --content-bg: #f9f9f9;
-            --border-color: #ddd;
-            color: #000;
-            background-color: #fff;
-        }
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+      }
+
+      .theme-toggle button {
+        padding: 10px 20px;
+        font-size: 14px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .theme-toggle button:hover {
+        background-color: #0056b3;
+      }
+
+      .dark-theme {
+        --navbar-bg: #333;
+        --content-bg: #222;
+        --border-color: #444;
+        color: #fff;
+        background-color: #111;
+      }
+
+      .light-theme {
+        --navbar-bg: #f8f8f8;
+        --content-bg: #f9f9f9;
+        --border-color: #ddd;
+        color: #000;
+        background-color: #fff;
+      }
     </style>
-</head>
-<body class="dark-theme">
+  </head>
+  <body class="dark-theme">
     <div class="theme-toggle">
-        <button id="toggle-theme">Light Mode</button>
+      <button id="toggle-theme">Light Mode</button>
     </div>
     <div class="container">
-        <div class="nav-wrapper">
-            <div class="left-side">
-                <div class="nav-link-wrapper active-nav-link" id="home-link">
-                    <a href="index.html">Home</a>
-                </div>
-                <div class="nav-link-wrapper" id="about-link">
-                    <a href="about.html">About</a>
-                </div>
+      <div class="nav-wrapper">
+        <div class="left-side">
+          <div class="nav-link-wrapper" id="home-link">
+            <a href="index.html">Projects and Links</a>
+          </div>
+          <div class="nav-link-wrapper" id="about-link">
+            <a href="about.html">About Me</a>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="brand">
+            <div>IMAAN SOLTANALIPOUR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="portfolio-items-wrapper">
+          <!-- Project 1 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(1)">
+            <div class="subtitle">
+              AI-Powered Document Analysis and Semantic Search System
             </div>
-            <div class="right-side">
-                <div class="brand">
-                    <div>IMAAN SOLTANALIPOUR</div>
-                </div>
+            <div class="project-thumbnail">
+              <img src="Images/agent1.png" alt="Project Thumbnail" />
             </div>
+            <div class="click-details">
+              <a href="javascript:void(0)" onclick="openModal(1)"
+                >Click for Details</a
+              >
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(2)">
+            <div class="subtitle">
+              Self-Flying Drone Simulation with Unity ML-Agents
+            </div>
+            <div class="project-thumbnail">
+              <img src="Images/drone1.png" alt="Project Thumbnail" />
+            </div>
+            <div class="click-details">
+              <a href="javascript:void(0)" onclick="openModal(2)"
+                >Click for Details</a
+              >
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(3)">
+            <div class="subtitle">
+              Brain Disease Classification using Convolutional Neural Networks
+            </div>
+            <div class="project-thumbnail">
+              <img src="Images/scan1.png" alt="Project Thumbnail" />
+            </div>
+            <div class="click-details">
+              <a href="javascript:void(0)" onclick="openModal(3)"
+                >Click for Details</a
+              >
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(4)">
+            <div class="subtitle">
+              Artificial Intelligence and Machine Learning Physics Simulator
+            </div>
+            <div class="project-thumbnail">
+              <img src="Images/uni1.png" alt="Project Thumbnail" />
+            </div>
+            <div class="click-details">
+              <a href="javascript:void(0)" onclick="openModal(4)"
+                >Click for Details</a
+              >
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div class="portfolio-item-wrapper" onclick="openModal(5)">
+            <div class="subtitle">
+              Founder of Community College Research Organization Startup
+            </div>
+            <div class="project-thumbnail">
+              <img src="Images/ccro1.png" alt="Project Thumbnail" />
+            </div>
+            <div class="click-details">
+              <a href="javascript:void(0)" onclick="openModal(5)"
+                >Click for Details</a
+              >
+            </div>
+          </div>
         </div>
 
-        <div class="content-wrapper">
-            <div class="portfolio-items-wrapper">
-                <!-- Project 1 -->
-                <div class="portfolio-item-wrapper" onclick="openModal(1)">
-                    <div class="subtitle">AI-Powered Document Analysis and Semantic Search System</div>
-                    <div class="project-thumbnail">
-                        <img src="Images/agent1.png" alt="Project Thumbnail" />
-                    </div>
-                    <div class="click-details">
-                        <a href="javascript:void(0)" onclick="openModal(1)">Click for Details</a>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="portfolio-item-wrapper" onclick="openModal(2)">
-                    <div class="subtitle">Self-Flying Drone Simulation with Unity ML-Agents</div>
-                    <div class="project-thumbnail">
-                        <img src="Images/drone1.png" alt="Project Thumbnail" />
-                    </div>
-                    <div class="click-details">
-                        <a href="javascript:void(0)" onclick="openModal(2)">Click for Details</a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="portfolio-item-wrapper" onclick="openModal(3)">
-                    <div class="subtitle">Brain Disease Classification using Convolutional Neural Networks</div>
-                    <div class="project-thumbnail">
-                        <img src="Images/scan1.png" alt="Project Thumbnail" />
-                    </div>
-                    <div class="click-details">
-                        <a href="javascript:void(0)" onclick="openModal(3)">Click for Details</a>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="portfolio-item-wrapper" onclick="openModal(4)">
-                    <div class="subtitle">Artificial Intelligence and Machine Learning Physics Simulator</div>
-                    <div class="project-thumbnail">
-                        <img src="Images/uni1.png" alt="Project Thumbnail" />
-                    </div>
-                    <div class="click-details">
-                        <a href="javascript:void(0)" onclick="openModal(4)">Click for Details</a>
-                    </div>
-                </div>
-                <!-- Project 5 -->
-                <div class="portfolio-item-wrapper" onclick="openModal(5)">
-                    <div class="subtitle">Founder of Community College Research Organization Startup</div>
-                    <div class="project-thumbnail">
-                        <img src="Images/ccro1.png" alt="Project Thumbnail" />
-                    </div>
-                    <div class="click-details">
-                        <a href="javascript:void(0)" onclick="openModal(5)">Click for Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="additional-info-wrapper">
-                <a href="https://app.joinhandshake.com/stu/users/57102137" class="button-nav" target="_blank">Handshake</a>
-                <a href="https://www.linkedin.com/in/imaan-soltanalipour-0452b6251/" class="button-nav" target="_blank">LinkedIn</a>
-                <a href="https://github.com/wimaan3" class="button-nav" target="_blank">GitHub</a>
-            </div>
+        <div class="additional-info-wrapper">
+          <a
+            href="https://app.joinhandshake.com/stu/users/57102137"
+            class="button-nav"
+            target="_blank"
+            >Handshake</a
+          >
+          <a
+            href="https://www.linkedin.com/in/imaan-soltanalipour-0452b6251/"
+            class="button-nav"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/wimaan3"
+            class="button-nav"
+            target="_blank"
+            >GitHub</a
+          >
         </div>
+      </div>
     </div>
 
     <!-- Modal for Project Details -->
     <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="slideshow-container" id="slideshow-container">
-                <img id="slideshow-img" src="" alt="Project Image" />
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <button class="next" onclick="nextSlide()">&#10095;</button>
-            </div>
-            <div class="description" id="project-description"></div>
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="slideshow-container" id="slideshow-container">
+          <img id="slideshow-img" src="" alt="Project Image" />
+          <button class="prev" onclick="prevSlide()">&#10094;</button>
+          <button class="next" onclick="nextSlide()">&#10095;</button>
         </div>
+        <div class="description" id="project-description"></div>
+      </div>
     </div>
 
     <script>
-        const projectDetails = {
-            1: {
-                images: ["Images/agent1.png", "Images/agent2.png", "Images/agent3.png", "Images/agent4.png"],
-                description: `
+      const projectDetails = {
+        1: {
+          images: [
+            "Images/agent1.png",
+            "Images/agent2.png",
+            "Images/agent3.png",
+            "Images/agent4.png",
+          ],
+          description: `
                     <ul>
                         <li>Developed an AI-driven system to process and analyze any set of data inputted into the system.</li>
                         <li>Leveraged NLP and vector embeddings to extract insights and detailed answers from document content based on user queries.</li>
@@ -377,10 +444,16 @@
                         <li>Implemented batch processing with <code>concurrent.futures</code> to parallelize data ingestion, reducing document insertion time by 40%.</li>
                     </ul>
                 `,
-            },
-            2: {
-                images: ["Images/drone1.png", "Images/drone2.png", "Images/drone3.png", "Images/drone4.png", "Images/drone5.png"],
-                description: `
+        },
+        2: {
+          images: [
+            "Images/drone1.png",
+            "Images/drone2.png",
+            "Images/drone3.png",
+            "Images/drone4.png",
+            "Images/drone5.png",
+          ],
+          description: `
                     <ul>
                         <li>Developed a self-flying drone simulation using Unity’s ML-Agents framework and Python for training neural networks.</li>
                         <li>Designed physics-accurate drone models and environments using machine learning techniques and advanced reward policies.</li>
@@ -389,10 +462,15 @@
                         <li>Planned to be implemented on physical drones for real-world use cases.</li>
                     </ul>
                 `,
-            },
-            3: {
-                images: ["Images/scan1.png", "Images/scan2.png", "Images/scan3.png", "Images/scan4.png"],
-                description: `
+        },
+        3: {
+          images: [
+            "Images/scan1.png",
+            "Images/scan2.png",
+            "Images/scan3.png",
+            "Images/scan4.png",
+          ],
+          description: `
                     <ul>
                         <li>Developed a deep learning model to classify brain diseases from CT scan images into three categories: aneurysm, cancer, and tumor.</li>
                         <li>Utilized Convolutional Neural Networks (CNNs) for image recognition and trained the model using TensorFlow and Keras.</li>
@@ -402,10 +480,10 @@
                         <li>Reduced overfitting by 15% between training and validation accuracy.</li>
                     </ul>
                 `,
-            },
-            4: {
-                images: ["Images/uni1.png", "Images/uni2.png"],
-                description: `
+        },
+        4: {
+          images: ["Images/uni1.png", "Images/uni2.png"],
+          description: `
                     <ul>
                         <li>Developing a comprehensive Python-based AI and Machine Learning Physics Simulator designed to model and predict complex physical scenarios based on user inputs.</li>
                         <li>Built a natural language processing (NLP) neural network from scratch to interpret user commands and translate them into physical simulations.</li>
@@ -413,74 +491,91 @@
                         <li>Uses advanced statistical methods and machine learning for data collection and analysis to improve prediction accuracy.</li>
                     </ul>
                 `,
-            },
-            5: {
-                images: ["Images/ccro1.png", "Images/ccro2.png", "Images/ccro3.png"],
-                description: `
+        },
+        5: {
+          images: ["Images/ccro1.png", "Images/ccro2.png", "Images/ccro3.png"],
+          description: `
                     <ul>
                         <li>Founded the Community College Research Organization (<a href="https://ccrorg.vercel.app/" target="_blank">CCRO</a>), a platform that connects students and professors for research collaboration.</li>
                         <li>Built the website using JavaScript (React) and Firebase for a secure backend-to-frontend connection.</li>
                         <li>Promoted the platform through networking at Moorpark College, increasing user engagement and collaboration.</li>
                     </ul>
                 `,
-            },
-        };
+        },
+      };
 
-        let currentImageIndex = 0;
-        let currentProjectId = null;
+      let currentImageIndex = 0;
+      let currentProjectId = null;
 
-        function openModal(projectId) {
-            currentProjectId = projectId;
-            document.getElementById("projectModal").style.display = "flex";
-            loadSlideshow(projectId);
+      const toggleButton = document.getElementById("toggle-theme");
+      const body = document.body;
+      const savedTheme = localStorage.getItem("theme");
+
+      function openModal(projectId) {
+        currentProjectId = projectId;
+        document.getElementById("projectModal").style.display = "flex";
+        loadSlideshow(projectId);
+      }
+
+      function closeModal() {
+        document.getElementById("projectModal").style.display = "none";
+      }
+
+      function loadSlideshow(projectId) {
+        const project = projectDetails[projectId];
+        if (!project) return;
+
+        currentImageIndex = 0;
+        document.getElementById("slideshow-img").src =
+          project.images[currentImageIndex];
+        document.getElementById("project-description").innerHTML =
+          project.description;
+      }
+
+      if (savedTheme) {
+        body.classList.remove("dark-theme", "light-theme");
+        body.classList.add(savedTheme);
+        toggleButton.textContent =
+          savedTheme === "dark-theme" ? "Light Mode" : "Dark Mode";
+      }
+
+      toggleButton.addEventListener("click", function () {
+        if (body.classList.contains("dark-theme")) {
+          body.classList.replace("dark-theme", "light-theme");
+          toggleButton.textContent = "Dark Mode";
+          localStorage.setItem("theme", "light-theme");
+        } else {
+          body.classList.replace("light-theme", "dark-theme");
+          toggleButton.textContent = "Light Mode";
+          localStorage.setItem("theme", "dark-theme");
         }
+      });
 
-        function closeModal() {
-            document.getElementById("projectModal").style.display = "none";
+      function nextSlide() {
+        const project = projectDetails[currentProjectId];
+        if (project) {
+          currentImageIndex = (currentImageIndex + 1) % project.images.length;
+          document.getElementById("slideshow-img").src =
+            project.images[currentImageIndex];
         }
+      }
 
-        function loadSlideshow(projectId) {
-            const project = projectDetails[projectId];
-            if (!project) return;
-
-            currentImageIndex = 0;
-            document.getElementById("slideshow-img").src = project.images[currentImageIndex];
-            document.getElementById("project-description").innerHTML = project.description;
+      function prevSlide() {
+        const project = projectDetails[currentProjectId];
+        if (project) {
+          currentImageIndex =
+            (currentImageIndex - 1 + project.images.length) %
+            project.images.length;
+          document.getElementById("slideshow-img").src =
+            project.images[currentImageIndex];
         }
+      }
 
-        function nextSlide() {
-            const project = projectDetails[currentProjectId];
-            if (project) {
-                currentImageIndex = (currentImageIndex + 1) % project.images.length;
-                document.getElementById("slideshow-img").src = project.images[currentImageIndex];
-            }
+      window.onclick = function (event) {
+        if (event.target == document.getElementById("projectModal")) {
+          closeModal();
         }
-
-        function prevSlide() {
-            const project = projectDetails[currentProjectId];
-            if (project) {
-                currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
-                document.getElementById("slideshow-img").src = project.images[currentImageIndex];
-            }
-        }
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById("projectModal")) {
-                closeModal();
-            }
-        };
-
-        const toggleButton = document.getElementById('toggle-theme');
-        const body = document.body;
-        toggleButton.addEventListener('click', function () {
-            if (body.classList.contains('dark-theme')) {
-                body.classList.replace('dark-theme', 'light-theme');
-                toggleButton.textContent = 'Dark Mode';
-            } else {
-                body.classList.replace('light-theme', 'dark-theme');
-                toggleButton.textContent = 'Light Mode';
-            }
-        });
+      };
     </script>
-</body>
+  </body>
 </html>

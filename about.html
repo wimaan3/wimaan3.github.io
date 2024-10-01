@@ -1,77 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
-</head>
-<body class="dark-theme">
+  </head>
+  <body class="dark-theme">
     <div class="theme-toggle">
-        <button id="toggle-theme">Light Mode</button>
+      <button id="toggle-theme">Light Mode</button>
     </div>
     <div class="container">
-        <div class="nav-wrapper">
-            <div class="left-side">
-                <div class="nav-link-wrapper" id="home-link">
-                    <a href="index.html">Home</a>
-                </div>
-                <div class="nav-link-wrapper active-nav-link" id="about-link">
-                    <a href="about.html">About</a>
-                </div>
-            </div>
-            <div class="right-side">
-                <div class="brand">
-                    <div>IMAAN SOLTANALIPOUR</div>
-                </div>
-            </div>
+      <div class="nav-wrapper">
+        <div class="left-side">
+          <div class="nav-link-wrapper" id="home-link">
+            <a href="index.html">Projects and Links</a>
+          </div>
+          <div class="nav-link-wrapper" id="about-link">
+            <a href="about.html">About Me</a>
+          </div>
         </div>
+        <div class="right-side">
+          <div class="brand">
+            <div>IMAAN SOLTANALIPOUR</div>
+          </div>
+        </div>
+      </div>
 
-        <div class="content-wrapper">
-            <div class="two-column-wrapper">
-                <div class="profile-image-wrapper">
-                    <img src="Images/Untitled design.jpg" alt="Profile Picture">
-                </div>
-                <div class="profile-content-wrapper">
-                    <h1>
-                        Hello, my name is Imaan Soltanalipour. I am a transfer student at studying Computer Science at UCLA. I have extensive experience in developing full-stack software applications and Artificial Intelligence/Machine Learning projects. Please feel to reach out to me about anything. I hope to make a lasting impact with you all.
-                    </h1>
-                </div>
-                <div class="contact-wrapper">
-                    <h2>Contact Me</h2>
-                    <form id="contact-form" action="https://formspree.io/f/mnqeeddz" method="POST">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
+      <div class="content-wrapper">
+        <div class="two-column-wrapper">
+          <div class="profile-image-wrapper">
+            <img src="Images/Untitled design.jpg" alt="Profile Picture" />
+          </div>
+          <div class="profile-content-wrapper">
+            <h3>
+              Hello, my name is Imaan Soltanalipour. I am a transfer student at
+              studying Computer Science at UCLA. I have extensive experience in
+              developing full-stack software applications and Artificial
+              Intelligence/Machine Learning projects. I am looking for
+              internship and research opportunities. Please feel to reach out to
+              me about anything. I hope to make a lasting impact with you all.
+            </h3>
+          </div>
+          <div class="contact-wrapper">
+            <h2>Contact Me</h2>
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/mnqeeddz"
+              method="POST"
+            >
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+              <label for="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+              <button type="submit">Send</button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
     <script>
-        const currentPath = window.location.pathname;
-        if (currentPath.includes('index.html')) {
-            document.getElementById('home-link').classList.add('active-nav-link');
-            document.getElementById('about-link').classList.remove('active-nav-link');
-        } else if (currentPath.includes('about.html')) {
-            document.getElementById('home-link').classList.remove('active-nav-link');
-            document.getElementById('about-link').classList.add('active-nav-link');
-        }
+      const currentPath = window.location.pathname;
+      const toggleButton = document.getElementById("toggle-theme");
+      const body = document.body;
+      const savedTheme = localStorage.getItem("theme");
 
-        const toggleButton = document.getElementById('toggle-theme');
-        const body = document.body;
-        toggleButton.addEventListener('click', function () {
-            if (body.classList.contains('dark-theme')) {
-                body.classList.replace('dark-theme', 'light-theme');
-                toggleButton.textContent = 'Dark Mode';
-            } else {
-                body.classList.replace('light-theme', 'dark-theme');
-                toggleButton.textContent = 'Light Mode';
-            }
-        });
+      if (savedTheme) {
+        body.classList.remove("dark-theme", "light-theme");
+        body.classList.add(savedTheme);
+        toggleButton.textContent =
+          savedTheme === "dark-theme" ? "Light Mode" : "Dark Mode";
+      }
+
+      toggleButton.addEventListener("click", function () {
+        if (body.classList.contains("dark-theme")) {
+          body.classList.replace("dark-theme", "light-theme");
+          toggleButton.textContent = "Dark Mode";
+          localStorage.setItem("theme", "light-theme");
+        } else {
+          body.classList.replace("light-theme", "dark-theme");
+          toggleButton.textContent = "Light Mode";
+          localStorage.setItem("theme", "dark-theme");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
