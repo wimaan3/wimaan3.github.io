@@ -426,6 +426,29 @@
     </div>
 
     <script>
+
+       // Capture the initial window width when the page loads
+  const initialWidth = window.innerWidth;
+
+// Function to check the window size and apply styles
+function checkWindowSize() {
+  const currentWidth = window.innerWidth;
+  const infoWrapper = document.querySelector('.additional-info-wrapper');
+
+  if (currentWidth <= initialWidth / 2) {
+    // Window is resized to less than half of its original width
+    infoWrapper.style.justifyContent = 'flex-end'; // Move to the right
+  } else {
+    // Window is more than half its original width
+    infoWrapper.style.justifyContent = 'center'; // Keep it centered
+  }
+}
+
+// Add event listener for window resize
+window.addEventListener('resize', checkWindowSize);
+
+// Check the size initially on page load
+checkWindowSize();
       const projectDetails = {
         1: {
           images: [
@@ -475,9 +498,7 @@
                         <li>Developed a deep learning model to classify brain diseases from CT scan images into three categories: aneurysm, cancer, and tumor.</li>
                         <li>Utilized Convolutional Neural Networks (CNNs) for image recognition and trained the model using TensorFlow and Keras.</li>
                         <li>Implemented data preprocessing, augmentation, and model evaluation techniques to achieve high accuracy.</li>
-                        <li>Achieved 90%+ classification accuracy after data augmentation and hyperparameter optimization.</li>
-                        <li>Processed over 5,000 medical images with an augmented dataset size of over 10,000 images.</li>
-                        <li>Reduced overfitting by 15% between training and validation accuracy.</li>
+                        <li>Processed over 250 medical images with an augmented dataset size of over 1000 images.</li>
                     </ul>
                 `,
         },
@@ -510,6 +531,8 @@
       const toggleButton = document.getElementById("toggle-theme");
       const body = document.body;
       const savedTheme = localStorage.getItem("theme");
+
+      
 
       function openModal(projectId) {
         currentProjectId = projectId;
