@@ -320,7 +320,7 @@
           <!-- Project 1 -->
           <div class="portfolio-item-wrapper" onclick="openModal(1)">
             <div class="subtitle">
-              AI-Powered Document Analysis and Semantic Search System
+              AI-ML Multi-Modal Text and Image Analysis System
             </div>
             <div class="project-thumbnail">
               <img src="Images/agent1.png" alt="Project Thumbnail" />
@@ -341,20 +341,6 @@
             </div>
             <div class="click-details">
               <a href="javascript:void(0)" onclick="openModal(2)"
-                >Click for Details</a
-              >
-            </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="portfolio-item-wrapper" onclick="openModal(3)">
-            <div class="subtitle">
-              Brain Disease Classification using Convolutional Neural Networks
-            </div>
-            <div class="project-thumbnail">
-              <img src="Images/scan1.png" alt="Project Thumbnail" />
-            </div>
-            <div class="click-details">
-              <a href="javascript:void(0)" onclick="openModal(3)"
                 >Click for Details</a
               >
             </div>
@@ -426,29 +412,28 @@
     </div>
 
     <script>
+       
+      const initialWidth = window.innerWidth;
 
-       // Capture the initial window width when the page loads
-  const initialWidth = window.innerWidth;
+       
+      function checkWindowSize() {
+        const currentWidth = window.innerWidth;
+        const infoWrapper = document.querySelector(".additional-info-wrapper");
 
-// Function to check the window size and apply styles
-function checkWindowSize() {
-  const currentWidth = window.innerWidth;
-  const infoWrapper = document.querySelector('.additional-info-wrapper');
+        if (currentWidth <= initialWidth / 2) {
+           
+          infoWrapper.style.justifyContent = "flex-end";  
+        } else {
+           
+          infoWrapper.style.justifyContent = "center";  
+        }
+      }
 
-  if (currentWidth <= initialWidth / 2) {
-    // Window is resized to less than half of its original width
-    infoWrapper.style.justifyContent = 'flex-end'; // Move to the right
-  } else {
-    // Window is more than half its original width
-    infoWrapper.style.justifyContent = 'center'; // Keep it centered
-  }
-}
+       
+      window.addEventListener("resize", checkWindowSize);
 
-// Add event listener for window resize
-window.addEventListener('resize', checkWindowSize);
-
-// Check the size initially on page load
-checkWindowSize();
+       
+      checkWindowSize();
       const projectDetails = {
         1: {
           images: [
@@ -456,17 +441,21 @@ checkWindowSize();
             "Images/agent2.png",
             "Images/agent3.png",
             "Images/agent4.png",
+            "Images/scan1.png",
+            "Images/scan2.png",
+            "Images/scan3.png",
+            "Images/scan4.png",
           ],
           description: `
-                    <ul>
-                        <li>Developed an AI-driven system to process and analyze any set of data inputted into the system.</li>
-                        <li>Leveraged NLP and vector embeddings to extract insights and detailed answers from document content based on user queries.</li>
-                        <li>Integrated Pinecone for vector storage and semantic search of historical documents from a large dataset.</li>
-                        <li>Utilized Hugging Face’s sentence-transformers to generate high-dimensional embeddings for textual content, achieving an average cosine similarity score of 0.92.</li>
-                        <li>Designed and optimized a pipeline to process over 20,000 historical documents, extracting data from CSVs and PDFs.</li>
-                        <li>Implemented batch processing with <code>concurrent.futures</code> to parallelize data ingestion, reducing document insertion time by 40%.</li>
-                    </ul>
-                `,
+                          <ul>
+                              <li>Developed an AI-driven system to process and analyze any set of data inputted into the system.</li>
+                              <li>Leveraged NLP and vector embeddings to extract insights and detailed answers from document content based on user queries.</li>
+                              <li>Integrated Pinecone for vector storage and semantic search of historical documents from a large dataset.</li>
+                              <li>Utilized Hugging Face’s sentence-transformers to generate high-dimensional embeddings for textual content, achieving an average cosine similarity score of 0.92.</li>
+                              <li>Designed and optimized a pipeline to process over 20,000 historical documents, extracting data from CSVs and PDFs.</li>
+                              <li>Implemented batch processing with <code>concurrent.futures</code> to parallelize data ingestion, reducing document insertion time by 40%.</li>
+                          </ul>
+                      `,
         },
         2: {
           images: [
@@ -477,51 +466,35 @@ checkWindowSize();
             "Images/drone5.png",
           ],
           description: `
-                    <ul>
-                        <li>Developed a self-flying drone simulation using Unity’s ML-Agents framework and Python for training neural networks.</li>
-                        <li>Designed physics-accurate drone models and environments using machine learning techniques and advanced reward policies.</li>
-                        <li>Simulated over 500,000 training steps, achieving a runtime decrease of 30% through optimization and environmental design.</li>
-                        <li>Integrated onboard processing in the simulation for real-time decision-making, achieving a 90% success rate in navigation tasks.</li>
-                        <li>Planned to be implemented on physical drones for real-world use cases.</li>
-                    </ul>
-                `,
-        },
-        3: {
-          images: [
-            "Images/scan1.png",
-            "Images/scan2.png",
-            "Images/scan3.png",
-            "Images/scan4.png",
-          ],
-          description: `
-                    <ul>
-                        <li>Developed a deep learning model to classify brain diseases from CT scan images into three categories: aneurysm, cancer, and tumor.</li>
-                        <li>Utilized Convolutional Neural Networks (CNNs) for image recognition and trained the model using TensorFlow and Keras.</li>
-                        <li>Implemented data preprocessing, augmentation, and model evaluation techniques to achieve high accuracy.</li>
-                        <li>Processed over 250 medical images with an augmented dataset size of over 1000 images.</li>
-                    </ul>
-                `,
+                          <ul>
+                              <li>Developed a self-flying drone simulation using Unity’s ML-Agents framework and Python for training neural networks.</li>
+                              <li>Designed physics-accurate drone models and environments using machine learning techniques and advanced reward policies.</li>
+                              <li>Simulated over 500,000 training steps, achieving a runtime decrease of 30% through optimization and environmental design.</li>
+                              <li>Integrated onboard processing in the simulation for real-time decision-making, achieving a 90% success rate in navigation tasks.</li>
+                              <li>Planned to be implemented on physical drones for real-world use cases.</li>
+                          </ul>
+                      `,
         },
         4: {
           images: ["Images/uni1.png", "Images/uni2.png"],
           description: `
-                    <ul>
-                        <li>Developing a comprehensive Python-based AI and Machine Learning Physics Simulator designed to model and predict complex physical scenarios based on user inputs.</li>
-                        <li>Built a natural language processing (NLP) neural network from scratch to interpret user commands and translate them into physical simulations.</li>
-                        <li>Provides a versatile tool for exploring and forecasting a wide range of physical phenomena.</li>
-                        <li>Uses advanced statistical methods and machine learning for data collection and analysis to improve prediction accuracy.</li>
-                    </ul>
-                `,
+                          <ul>
+                              <li>Developing a comprehensive Python-based AI and Machine Learning Physics Simulator designed to model and predict complex physical scenarios based on user inputs.</li>
+                              <li>Built a natural language processing (NLP) neural network from scratch to interpret user commands and translate them into physical simulations.</li>
+                              <li>Provides a versatile tool for exploring and forecasting a wide range of physical phenomena.</li>
+                              <li>Uses advanced statistical methods and machine learning for data collection and analysis to improve prediction accuracy.</li>
+                          </ul>
+                      `,
         },
         5: {
           images: ["Images/ccro1.png", "Images/ccro2.png", "Images/ccro3.png"],
           description: `
-                    <ul>
-                        <li>Founded the Community College Research Organization (<a href="https://ccrorg.vercel.app/" target="_blank">CCRO</a>), a platform that connects students and professors for research collaboration.</li>
-                        <li>Built the website using JavaScript (React) and Firebase for a secure backend-to-frontend connection.</li>
-                        <li>Promoted the platform through networking at Moorpark College, increasing user engagement and collaboration.</li>
-                    </ul>
-                `,
+                          <ul>
+                              <li>Founded the Community College Research Organization (<a href="https://ccrorg.vercel.app/" target="_blank">CCRO</a>), a platform that connects students and professors for research collaboration.</li>
+                              <li>Built the website using JavaScript (React) and Firebase for a secure backend-to-frontend connection.</li>
+                              <li>Promoted the platform through networking at Moorpark College, increasing user engagement and collaboration.</li>
+                          </ul>
+                      `,
         },
       };
 
@@ -531,8 +504,6 @@ checkWindowSize();
       const toggleButton = document.getElementById("toggle-theme");
       const body = document.body;
       const savedTheme = localStorage.getItem("theme");
-
-      
 
       function openModal(projectId) {
         currentProjectId = projectId;
@@ -580,6 +551,28 @@ checkWindowSize();
           currentImageIndex = (currentImageIndex + 1) % project.images.length;
           document.getElementById("slideshow-img").src =
             project.images[currentImageIndex];
+
+           
+          if (
+            currentProjectId === 1 &&
+            currentImageIndex >= 4 &&
+            currentImageIndex <= 7
+          ) {
+            project.description = `
+        <ul>
+          <li>Developed a deep learning model to classify brain diseases from CT scan images into three categories: aneurysm, cancer, and tumor.</li>
+          <li>Utilized Convolutional Neural Networks (CNNs) for image recognition and trained the model using TensorFlow and Keras.</li>
+          <li>Implemented data preprocessing, augmentation, and model evaluation techniques to achieve high accuracy.</li>
+          <li>Processed over 250 medical images with an augmented dataset size of over 1000 images.</li>
+        </ul>`;
+          } else {
+             
+            project.description = projectDetails[currentProjectId].description;
+          }
+
+           
+          document.getElementById("project-description").innerHTML =
+            project.description;
         }
       }
 
@@ -591,6 +584,28 @@ checkWindowSize();
             project.images.length;
           document.getElementById("slideshow-img").src =
             project.images[currentImageIndex];
+
+           
+          if (
+            currentProjectId === 1 &&
+            currentImageIndex >= 4 &&
+            currentImageIndex <= 7
+          ) {
+            project.description = `
+        <ul>
+          <li>Developed a deep learning model to classify brain diseases from CT scan images into three categories: aneurysm, cancer, and tumor.</li>
+          <li>Utilized Convolutional Neural Networks (CNNs) for image recognition and trained the model using TensorFlow and Keras.</li>
+          <li>Implemented data preprocessing, augmentation, and model evaluation techniques to achieve high accuracy.</li>
+          <li>Processed over 250 medical images with an augmented dataset size of over 1000 images.</li>
+        </ul>`;
+          } else {
+             
+            project.description = projectDetails[currentProjectId].description;
+          }
+
+           
+          document.getElementById("project-description").innerHTML =
+            project.description;
         }
       }
 
