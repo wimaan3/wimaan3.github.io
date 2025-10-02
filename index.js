@@ -25,32 +25,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---------------- Project Slideshow Data ----------------
   const projectDetails = {
+   
     1: {
-      images: ["Images/ag1.png","Images/ag2.png","Images/ag3.png","Images/ag4.png","Images/ag5.png","Images/cnn1.png","Images/cnn2.png","Images/cnn3.png","Images/cnn4.png","Images/cnn5.png","Images/cnn6.png"],
+      images: ["Images/robot.png","Images/robot1.png","Images/robot2.png","Images/robot3.png"],
       description: "<ul></ul>",
       links: [
-        { url: "https://github.com/wimaan3/project1", label: "GitHub Repo" }
+        { url: "https://github.com/wimaan3/robotics", label: "Robotics GitHub Repo" }
       ]
     },
     2: {
-      images: ["Images/drone1.png","Images/drone2.png","Images/drone3.png","Images/drone4.png","Images/drone5.png"],
-      description: '<ul><a href="https://docsend.com/view/exjj5r4gxbxirrcu" target="_blank" class="red-link">View Project Document</a></ul>',
+      images: ["Images/remote.jpg"],
+      description: "<ul></ul>",
       links: [
-        { url: "https://github.com/wimaan3/project1", label: "GitHub Repo" }
+        { url: "https://github.com/wimaan3/Embedded-Systems", label: "Embedded-Systems GitHub Repo" }
+      ]
+    },
+    3: {
+      images: ["Images/fpga.png","Images/fpga1.png","Images/fpga2.png"],
+      description: "<ul></ul>",
+      links: [
+        { url: "https://github.com/wimaan3/Embedded-Systems", label: "Embedded-Systems GitHub Repo" }
       ]
     },
     4: {
-      images: ["Images/uni1.png","Images/uni2.png"],
+      images: ["Images/drone1.png","Images/drone2.png","Images/drone3.png","Images/drone4.png","Images/drone5.png"],
       description: "<ul></ul>",
       links: [
-        { url: "https://github.com/wimaan3/project1", label: "GitHub Repo" }
+        { url: "https://github.com/wimaan3/Robotics", label: "Robotics GitHub Repo" }
       ]
     },
     5: {
+      images: ["Images/workinprogress.jpg"],
+      description: "<ul></ul>",
+      links: [
+        { url: "https://github.com/wimaan3/Simulations", label: "Simulations GitHub Repo" }
+      ]
+    },
+    6: {
+      images: ["Images/ag1.png","Images/ag2.png","Images/ag3.png", "Images/ag4.png","Images/ag5.png","Images/cnn1.png",
+        "Images/cnn2.png","Images/cnn3.png","Images/cnn4.png", "Images/cnn5.png", "Images/cnn6.png"
+
+      ],
+      description: "<ul></ul>",
+      links: [
+        { url: "https://github.com/wimaan3/AI-ML", label: "AI-ML GitHub Repo" }
+      ]
+    },
+    7: {
       images: ["Images/ccro1.png","Images/ccro2.png","Images/ccro3.png"],
       description: "<ul></ul>",
       links: [
-        { url: "https://github.com/wimaan3/project1", label: "GitHub Repo" }
+        { url: "https://github.com/wimaan3/Startups", label: "Startups GitHub Repo" }
       ]
     }
   };
