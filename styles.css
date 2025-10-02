@@ -71,12 +71,10 @@ html {
 .nav-wrapper {
     display: flex;
     flex-direction: column;
-    /* stack links and name */
     align-items: center;
     background-color: var(--navbar-bg);
     padding: 10px 20px;
     gap: 10px;
-    /* space between links and name */
 }
 
 .left-side {
@@ -101,12 +99,20 @@ html {
 .nav-link:visited {
     text-decoration: none;
     color: inherit;
-    font-weight: 600;
+    font-weight: 400; 
 }
 
 .nav-link:hover {
     text-decoration: underline;
 }
+
+/* Highlight the current page */
+.nav-link.active {
+    color: var(--accent);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
 
 .two-column-wrapper {
     display: flex;
