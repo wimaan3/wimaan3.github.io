@@ -3,101 +3,122 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>About - Imaan Soltanalipour</title>
+
+    <!-- Inline theme script to prevent flash -->
+    <script>
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem("theme");
+          if (savedTheme === "dark-theme" || savedTheme === "light-theme") {
+            document.documentElement.classList.add(savedTheme);
+          } else {
+            document.documentElement.classList.add("dark-theme");
+          }
+        } catch (e) {
+          document.documentElement.classList.add("dark-theme");
+        }
+      })();
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Lato"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="dark-theme">
+  <body>
+    <!-- Theme Toggle -->
     <div class="theme-toggle">
       <button id="toggle-theme">Light Mode</button>
     </div>
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="left-side">
-          <div class="nav-link-wrapper" id="home-link">
-            <a href="index.html">Projects and Links</a>
-          </div>
-          <div class="nav-link-wrapper" id="about-link">
-            <a href="about.html">About Me</a>
-          </div>
-        </div>
-        <div class="right-side">
-          <div class="brand">
-            <div>IMAAN SOLTANALIPOUR</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="content-wrapper">
-        <div class="two-column-wrapper">
+    <div class="container">
+      <!-- Navigation -->
+      <header class="nav-wrapper">
+        <div class="right-side brand">
+          <div>IMAAN SOLTANALIPOUR</div>
+        </div>
+        <nav class="left-side">
+          <a class="nav-link" href="index.html">Projects and Links</a>
+          <a class="nav-link" href="about.html">About Me</a>
+        </nav>
+      </header>
+
+      <!-- About Content -->
+      <main class="content-wrapper">
+        <section class="two-column-wrapper">
           <div class="profile-image-wrapper">
-            <img src="Images/Untitled design.jpg" alt="Profile Picture" />
+            <img
+              src="Images/Untitled design.jpg"
+              alt="Profile Picture of Imaan Soltanalipour"
+              loading="lazy"
+            />
           </div>
           <div class="profile-content-wrapper">
-            <h3>
-              Hello! My name is Imaan Soltanalipour, and I’m currently a
-              transfer student studying Computer Science at UCLA. I have
+            <h2>Hello!</h2>
+            <p>
+              My name is <strong>Imaan Soltanalipour</strong>, and I’m currently
+              a transfer student studying Computer Science at UCLA. I have
               extensive experience in developing full-stack software
               applications as well as Artificial Intelligence and Machine
               Learning projects. I am also in the process of learning embedded
               systems and integrating my software expertise into hardware
-              implementations. I am actively seeking internship and research
-              opportunities where I can apply my skills and contribute
-              meaningfully. Please feel free to reach out to discuss potential
-              opportunities, collaborations, or any other inquiries. I look
-              forward to making a lasting impact and contributing to exciting
-              projects with you all!
-            </h3>
+              implementations.
+            </p>
+            <p>
+              I am actively seeking internship and research opportunities where
+              I can apply my skills and contribute meaningfully. Please feel
+              free to reach out to discuss potential opportunities,
+              collaborations, or any other inquiries. I look forward to
+              contributing to exciting projects with you!
+            </p>
           </div>
-          <div class="contact-wrapper">
-            <h2>Contact Me</h2>
-            <form
-              id="contact-form"
-              action="https://formspree.io/f/mnqeeddz"
-              method="POST"
-            >
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required />
-              <label for="message">Message:</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                required
-              ></textarea>
-              <button type="submit">Send</button>
-            </form>
-          </div>
+        </section>
+
+        <div class="additional-info-wrapper">
+          <a
+            href="https://app.joinhandshake.com/stu/users/57102137"
+            class="button-nav"
+            target="_blank"
+            >Handshake</a
+          >
+          <a
+            href="https://www.linkedin.com/in/imaan-soltanalipour-0452b6251/"
+            class="button-nav"
+            target="_blank"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/wimaan3"
+            class="button-nav"
+            target="_blank"
+            >GitHub</a
+          >
         </div>
-      </div>
+
+        <!-- Contact Section -->
+        <section class="contact-wrapper">
+          <h2>Contact Me</h2>
+          <p>
+            <a class="email-button" href="mailto:imaansoltan@gmail.com"
+              >📧 Email Me</a
+            >
+          </p>
+          <p>
+            If the button doesn’t work, copy this address:
+            <strong>imaansoltan@gmail.com</strong>
+          </p>
+        </section>
+      </main>
     </div>
-    <script>
-      const currentPath = window.location.pathname;
-      const toggleButton = document.getElementById("toggle-theme");
-      const body = document.body;
-      const savedTheme = localStorage.getItem("theme");
 
-      if (savedTheme) {
-        body.classList.remove("dark-theme", "light-theme");
-        body.classList.add(savedTheme);
-        toggleButton.textContent =
-          savedTheme === "dark-theme" ? "Light Mode" : "Dark Mode";
-      }
-
-      toggleButton.addEventListener("click", function () {
-        if (body.classList.contains("dark-theme")) {
-          body.classList.replace("dark-theme", "light-theme");
-          toggleButton.textContent = "Dark Mode";
-          localStorage.setItem("theme", "light-theme");
-        } else {
-          body.classList.replace("light-theme", "dark-theme");
-          toggleButton.textContent = "Light Mode";
-          localStorage.setItem("theme", "dark-theme");
-        }
-      });
-    </script>
+    <!-- Scripts -->
+    <script src="about.js" defer></script>
   </body>
 </html>

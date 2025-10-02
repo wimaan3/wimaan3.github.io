@@ -3,328 +3,72 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Portfolio - Imaan Soltanalipour</title>
+
+    <!-- Inline theme script to prevent flash -->
+    <script>
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem("theme");
+          if (savedTheme === "dark-theme" || savedTheme === "light-theme") {
+            document.documentElement.classList.add(savedTheme);
+          } else {
+            document.documentElement.classList.add("dark-theme");
+          }
+        } catch (e) {
+          document.documentElement.classList.add("dark-theme");
+        }
+      })();
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Lato"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        font-family: "Lato", sans-serif;
-      }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      .dark-theme .active-nav-link a {
-        background-color: #000;
-        color: #fff;
-      }
-
-      .nav-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background-color: var(--navbar-bg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: 60px;
-      }
-
-      .left-side {
-        display: flex;
-        gap: 15px;
-      }
-
-      .nav-link-wrapper a {
-        text-decoration: none;
-        color: white;
-        font-size: 16px;
-        background-color: #007bff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-
-      .nav-link-wrapper a:hover {
-        background-color: #0056b3;
-      }
-
-      .active-nav-link a {
-        font-weight: bold;
-        background-color: #0056b3;
-      }
-
-      .right-side .brand div {
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .portfolio-items-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      .portfolio-item-wrapper {
-        width: 100%;
-        max-width: 320px;
-        margin-bottom: 40px;
-        text-align: center;
-        cursor: pointer;
-        transition: transform 0.3s;
-      }
-
-      .portfolio-item-wrapper:hover {
-        transform: scale(1.05);
-      }
-
-      .project-thumbnail img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-
-      .project-thumbnail {
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        text-align: center;
-        padding: 10px;
-        font-size: 14px;
-        background-size: cover;
-        background-position: center;
-      }
-
-      .subtitle {
-        margin-top: 15px;
-        font-size: 16px;
-        line-height: 1.4;
-      }
-
-      .click-details a {
-        color: #007bff;
-        text-decoration: none;
-        font-size: 14px;
-        margin-top: 10px;
-        display: inline-block;
-      }
-
-      .click-details a:hover {
-        color: #0056b3;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-content {
-        background-color: white;
-        padding: 20px;
-        width: 700px;
-        height: auto;
-        max-height: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        overflow-y: auto;
-      }
-
-      .dark-theme .modal-content {
-        background-color: #000;
-        color: #fff;
-      }
-
-      .dark-theme .close {
-        position: absolute;
-        top: -10px;
-        right: 0px;
-        color: white;
-        font-size: 30px;
-        cursor: pointer;
-      }
-
-      .light-theme .modal-content {
-        background-color: white;
-        color: #000;
-      }
-
-      .close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: black;
-        font-size: 30px;
-        cursor: pointer;
-      }
-
-      ul {
-        list-style-position: outside;
-        padding-left: 20px;
-      }
-
-      ul li {
-        text-align: left;
-        margin-bottom: 10px;
-        padding-left: 10px;
-      }
-
-      ul li::marker {
-        font-size: 16px;
-      }
-
-      ul li p {
-        margin: 0;
-      }
-
-      .slideshow-container img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-      }
-
-      .description {
-        margin-top: 15px;
-        text-align: center;
-        font-size: 14px;
-      }
-
-      .additional-info-wrapper {
-        display: flex;
-        justify-content: center;
-        margin-top: -190px;
-        gap: 15px;
-      }
-
-      .button-nav {
-        text-decoration: none;
-        color: white;
-        background-color: #007bff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        font-size: 16px;
-      }
-
-      .button-nav:hover {
-        background-color: #0056b3;
-      }
-
-      .prev,
-      .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        padding: 1px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        transition: 0.3s ease;
-        border-radius: 0 3px 3px 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        user-select: none;
-      }
-
-      .prev {
-        left: 1px;
-        border-radius: 3px 0 0 3px;
-      }
-
-      .next {
-        right: 1px;
-        border-radius: 3px 0 0 3px;
-      }
-
-      .prev:hover,
-      .next:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-      }
-
-      .theme-toggle {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-      }
-
-      .theme-toggle button {
-        padding: 10px 20px;
-        font-size: 14px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .theme-toggle button:hover {
-        background-color: #0056b3;
-      }
-
-      .dark-theme {
-        --navbar-bg: #333;
-        --content-bg: #222;
-        --border-color: #444;
-        color: #fff;
-        background-color: #111;
-      }
-
-      .light-theme {
-        --navbar-bg: #f8f8f8;
-        --content-bg: #f9f9f9;
-        --border-color: #ddd;
-        color: #000;
-        background-color: #fff;
-      }
-    </style>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="dark-theme">
+
+  <body>
+    <!-- Theme Toggle -->
     <div class="theme-toggle">
       <button id="toggle-theme">Light Mode</button>
     </div>
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="left-side">
-          <div class="nav-link-wrapper" id="home-link">
-            <a href="index.html">Projects and Links</a>
-          </div>
-          <div class="nav-link-wrapper" id="about-link">
-            <a href="about.html">About Me</a>
-          </div>
-        </div>
-        <div class="right-side">
-          <div class="brand">
-            <div>IMAAN SOLTANALIPOUR</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="content-wrapper">
+    <div class="container">
+      <!-- Navigation -->
+      <header class="nav-wrapper">
+        <div class="right-side brand">
+          <div>IMAAN SOLTANALIPOUR</div>
+        </div>
+        <nav class="left-side">
+          <a class="nav-link" href="index.html">Projects and Links</a>
+          <a class="nav-link" href="about.html">About Me</a>
+        </nav>
+      </header>
+
+      <!-- Portfolio Items -->
+      <main class="content-wrapper">
         <div class="portfolio-items-wrapper">
-          <!-- Project 1 -->
+          <!-- Example project -->
           <div class="portfolio-item-wrapper" onclick="openModal(1)">
             <div class="subtitle">
               AI-ML Multi-Modal Text and Image Intelligence System - Sub-project
               of Universal Intelligence System
             </div>
             <div class="project-thumbnail">
-              <img src="Images/ag1.png" alt="Project Thumbnail" />
+              <img
+                src="Images/ag1.png"
+                alt="Project Thumbnail"
+                width="320"
+                height="180"
+                loading="lazy"
+                style="aspect-ratio: 16/9; object-fit: cover"
+              />
             </div>
             <div class="click-details">
               <a href="javascript:void(0)" onclick="openModal(1)"
@@ -332,81 +76,27 @@
               >
             </div>
           </div>
-          <!-- Project 2 -->
-          <div class="portfolio-item-wrapper" onclick="openModal(2)">
-            <div class="subtitle">
-              Autonomous Drone Framework and Prototype - Will Adopt Both
-              Sub-Projects of Universal Intelligence System
-            </div>
-            <div class="project-thumbnail">
-              <img src="Images/drone1.png" alt="Project Thumbnail" />
-            </div>
-            <div class="click-details">
-              <a href="javascript:void(0)" onclick="openModal(2)"
-                >Click for Details</a
-              >
-            </div>
-          </div>
-          <!-- Project 4 -->
-          <div class="portfolio-item-wrapper" onclick="openModal(4)">
-            <div class="subtitle">
-              Physics Simulator and Scenario Intelligence System - Sub-project
-              of Universal Intelligence System
-            </div>
-            <div class="project-thumbnail">
-              <img src="Images/uni1.png" alt="Project Thumbnail" />
-            </div>
-            <div class="click-details">
-              <a href="javascript:void(0)" onclick="openModal(4)"
-                >Click for Details</a
-              >
-            </div>
-          </div>
-          <!-- Project 5 -->
-          <div class="portfolio-item-wrapper" onclick="openModal(5)">
-            <div class="subtitle">
-              Founder of Community College Research Organization Startup
-            </div>
-            <div class="project-thumbnail">
-              <img src="Images/ccro1.png" alt="Project Thumbnail" />
-            </div>
-            <div class="click-details">
-              <a href="javascript:void(0)" onclick="openModal(5)"
-                >Click for Details</a
-              >
-            </div>
-          </div>
-        </div>
 
-        <div class="additional-info-wrapper">
-          <a
-            href="https://app.joinhandshake.com/stu/users/57102137"
-            class="button-nav"
-            target="_blank"
-            >Handshake</a
-          >
-          <a
-            href="https://www.linkedin.com/in/imaan-soltanalipour-0452b6251/"
-            class="button-nav"
-            target="_blank"
-            >LinkedIn</a
-          >
-          <a
-            href="https://github.com/wimaan3"
-            class="button-nav"
-            target="_blank"
-            >GitHub</a
-          >
+          <!-- Add other projects with the same width/height/aspect-ratio -->
         </div>
-      </div>
+      </main>
     </div>
 
-    <!-- Modal for Project Details -->
+    <!-- Modal -->
     <div id="projectModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
+        <div id="project-links" class="modal-links"></div>
         <div class="slideshow-container" id="slideshow-container">
-          <img id="slideshow-img" src="" alt="Project Image" />
+          <img
+            id="slideshow-img"
+            src=""
+            alt="Project Image"
+            width="700"
+            height="400"
+            style="aspect-ratio: 16/9; object-fit: cover"
+            loading="lazy"
+          />
           <button class="prev" onclick="prevSlide()">&#10094;</button>
           <button class="next" onclick="nextSlide()">&#10095;</button>
         </div>
@@ -414,196 +104,7 @@
       </div>
     </div>
 
-    <script>
-      const initialWidth = window.innerWidth;
-
-      function checkWindowSize() {
-        const currentWidth = window.innerWidth;
-        const infoWrapper = document.querySelector(".additional-info-wrapper");
-
-        if (currentWidth <= initialWidth / 2) {
-          infoWrapper.style.justifyContent = "flex-end";
-        } else {
-          infoWrapper.style.justifyContent = "center";
-        }
-      }
-
-      window.addEventListener("resize", checkWindowSize);
-
-      checkWindowSize();
-      const projectDetails = {
-        1: {
-          images: [
-            "Images/ag1.png",
-            "Images/ag2.png",
-            "Images/ag3.png",
-            "Images/ag4.png",
-            "Images/ag5.png",
-            "Images/cnn1.png",
-            "Images/cnn2.png",
-            "Images/cnn3.png",
-            "Images/cnn4.png",
-            "Images/cnn5.png",
-            "Images/cnn6.png",
-          ],
-          description: `
-      <ul>
-        <li>Developing a dynamic AI system for flexible text analysis, allowing users to process any text-based dataset, including historical documents and other document formats like CSVs, PDFs, and web content.</li>
-        <li>Implemented a robust Natural Language Processing (NLP) pipeline to process text datasets, leveraging Hugging Face’s sentence-transformers for embeddings and Pinecone for vector storage and search.</li>
-        <li>Enabled users to dynamically select and process specific columns of text from CSV files, extracting insights based on user-defined queries and prompts.</li>
-        <li>Integrated real-time malware detection using ClamAV to ensure secure data ingestion, scanning all document datasets for potential threats prior to processing.</li>
-        <li>Optimized the system with batch processing and multi-threaded document ingestion using <code>concurrent.futures</code>, improving processing time by 40% for large-scale datasets.</li>
-        <li>Designed the text pipeline to be dynamic, handling any text dataset inputted by the user, with automatic downloading from sources like Kaggle, and support for semantic search and summarization.</li>
-        <li>Here is an example of the pipeline analyzing 100 historical documents of post-Civil War contracts and answering a customizable prompt and query.</li>
-      </ul>
-    `,
-        },
-        2: {
-          images: [
-            "Images/drone1.png",
-            "Images/drone2.png",
-            "Images/drone3.png",
-            "Images/drone4.png",
-            "Images/drone5.png",
-          ],
-          description: `
-      <ul>
-        <li>Developing a self-flying drone simulation using Unity’s ML-Agents framework and Python for training neural networks.</li>
-        <li>Designing physics-accurate drone models and environments using machine learning techniques and advanced reward policies.</li>
-        <li>Planned to be implemented on physical drones for real-world use cases using onboard-processing check out my plan in the link below.</li>
-        <p>Access the project document through the link right below these lines (requires email verification and NDA signature):</p>
-        <li>You will need the password and for me to whitelist your email to gain access to the document so please feel free to email me at: imaansoltan@gmail.com</li>
-<a href="https://docsend.com/view/exjj5r4gxbxirrcu" target="_blank" class="red-link">View Project Document</a>
-
-      </ul>
-    `,
-        },
-        4: {
-          images: ["Images/uni1.png", "Images/uni2.png"],
-          description: `
-      <ul>
-        <li>Developing a comprehensive Python-based AI and Machine Learning Physics Simulator designed to model and predict complex physical scenarios based on user inputs.</li>
-        <li>Built a natural language processing (NLP) neural network from scratch to interpret user commands and translate them into physical simulations.</li>
-        <li>This demonstrates how general physical scenarios are described, and the NLP neural network interprets the input to create the corresponding physics simulation.</li>
-        <li>We then run the simulation and collect data, so that when a user inputs a similar prompt in the future, predictions or requests related to the simulation can be answered without needing to rerun the training, saving time and memory.</li>
-      </ul>
-    `,
-        },
-        5: {
-          images: ["Images/ccro1.png", "Images/ccro2.png", "Images/ccro3.png"],
-          description: `
-      <ul>
-        <li>Founded the Community College Research Organization (<a href="https://ccrorg.vercel.app/" target="_blank" style="color: inherit; text-decoration: none;">CCRO</a>), a platform that connects students and professors for research collaboration.</li>
-        <li>Built the website using JavaScript (React) and Firebase for a secure backend-to-frontend connection.</li>
-        <li>Promoted the platform through networking at Moorpark College, increasing user engagement and collaboration.</li>
-        <li>Feel free to click the link on the CCRO acryonym in the first line of this description to explore the website and try it out for yourself.</li>
-      </ul>
-    `,
-        },
-      };
-
-      let currentImageIndex = 0;
-      let currentProjectId = null;
-
-      const toggleButton = document.getElementById("toggle-theme");
-      const body = document.body;
-      const savedTheme = localStorage.getItem("theme");
-
-      function openModal(projectId) {
-        currentProjectId = projectId;
-        document.getElementById("projectModal").style.display = "flex";
-        loadSlideshow(projectId);
-      }
-
-      function closeModal() {
-        document.getElementById("projectModal").style.display = "none";
-      }
-
-      function loadSlideshow(projectId) {
-        const project = projectDetails[projectId];
-        if (!project) return;
-
-        currentImageIndex = 0;
-        document.getElementById("slideshow-img").src =
-          project.images[currentImageIndex];
-        document.getElementById("project-description").innerHTML =
-          project.description;
-      }
-
-      if (savedTheme) {
-        body.classList.remove("dark-theme", "light-theme");
-        body.classList.add(savedTheme);
-        toggleButton.textContent =
-          savedTheme === "dark-theme" ? "Light Mode" : "Dark Mode";
-      }
-
-      toggleButton.addEventListener("click", function () {
-        if (body.classList.contains("dark-theme")) {
-          body.classList.replace("dark-theme", "light-theme");
-          toggleButton.textContent = "Dark Mode";
-          localStorage.setItem("theme", "light-theme");
-        } else {
-          body.classList.replace("light-theme", "dark-theme");
-          toggleButton.textContent = "Light Mode";
-          localStorage.setItem("theme", "dark-theme");
-        }
-      });
-
-      const project1ImageDescriptions = {
-        5: `
-    <ul> 
-      <li>Developed a dynamic AI system for flexible image analysis, allowing users to process any image-based dataset, including medical images like brain CT scans for disease classification.</li> 
-      <li>Implemented a Convolutional Neural Network (CNN) pipeline to process medical image datasets, automatically categorizing images and training a model to classify medical conditions based on user-defined labels (e.g., aneurysm, cancer, tumor).</li> 
-      <li>Enabled users to dynamically select image paths and process specific columns from CSV files, efficiently organizing and categorizing images for model training and validation.</li> 
-      <li>Integrated real-time malware detection using ClamAV to ensure secure data ingestion, scanning all image datasets for potential threats prior to processing.</li> 
-      <li>Utilized data augmentation techniques such as rotation, zoom, and horizontal flips to improve model robustness during image training, and achieved a 74% validation accuracy after 10 epochs.</li> 
-      <li>Designed the image pipeline to dynamically process any medical image dataset provided by the user, with support for real-time predictions on new images after model training.</li> 
-      <li>Here is an example of the pipeline training on brain CT scans, categorizing diseases like aneurysm, cancer, and tumors, and then predicting on a new image provided by the user.</li> 
-    </ul>`,
-        10: `
-    <ul>
-      <li>Returning to the general description after completing all image analysis demonstrations.</li>
-    </ul>`,
-      };
-
-      function updateSlide(change) {
-        const project = projectDetails[currentProjectId];
-        if (project) {
-          currentImageIndex =
-            (currentImageIndex + change + project.images.length) %
-            project.images.length;
-          document.getElementById("slideshow-img").src =
-            project.images[currentImageIndex];
-
-          if (
-            currentProjectId === 1 &&
-            currentImageIndex >= 5 &&
-            currentImageIndex <= 10
-          ) {
-            document.getElementById("project-description").innerHTML =
-              project1ImageDescriptions[5];
-          } else {
-            document.getElementById("project-description").innerHTML =
-              projectDetails[currentProjectId].description;
-          }
-        }
-      }
-
-      // Navigate to the next image
-      function nextSlide() {
-        updateSlide(1);
-      }
-
-      // Navigate to the previous image
-      function prevSlide() {
-        updateSlide(-1);
-      }
-
-      window.onclick = function (event) {
-        if (event.target == document.getElementById("projectModal")) {
-          closeModal();
-        }
-      };
-    </script>
+    <!-- Scripts -->
+    <script src="index.js" defer></script>
   </body>
 </html>
